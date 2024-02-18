@@ -1,15 +1,14 @@
 const { default: mongoose } = require("mongoose");
-const URL_DB =
-  "mongodb+srv://antonionicolas3003:ZMCy0a3oCCUp8gFW@cluster0.vp7ebx1.mongodb.net/?retryWrites=true&w=majority";
 const app = require("./app");
 const { createServer } = require("http");
+const config = require("./config");
 
 const servr = createServer(app);
 
-const server = servr.listen(8000, async () => {
+const server = servr.listen(config.PORT, async () => {
   try {
     mongoose
-      .connect(URL_DB)
+      .connect(config.URL_DB)
       .then(() => {
         // Cuando se realiza la conexión, lanzamos este mensaje por consola
         console.log(
