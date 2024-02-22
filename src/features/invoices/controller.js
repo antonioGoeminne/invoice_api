@@ -11,6 +11,16 @@ const getInvoices = async (req, res, next) => {
   }
 };
 
+const getInvoice = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const invoice = await getAll({ _id: id }, InvoiceSchema);
+    res.status(200).json(invoice?.[0]);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const createInvoice = async (req, res, next) => {
   try {
     const {
@@ -75,4 +85,10 @@ const deleteInvoice = async (req, res, next) => {
   }
 };
 
-module.exports = { getInvoices, createInvoice, updateInvoice, deleteInvoice };
+module.exports = {
+  getInvoices,
+  createInvoice,
+  updateInvoice,
+  deleteInvoice,
+  getInvoice,
+};
