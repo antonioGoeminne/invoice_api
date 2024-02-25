@@ -24,19 +24,19 @@ const client_email = check("client_email")
   .isLength({ max: 256 })
   .withMessage("client_email max length is of 256 characters");
 
-const total = check("total")
+const total_amount = check("total_amount")
   .exists()
-  .withMessage("total is required")
+  .withMessage("total_amount is required")
   .notEmpty()
-  .withMessage("total musn't be empty")
+  .withMessage("total_amount musn't be empty")
   .isNumeric()
-  .withMessage("total must be a number");
+  .withMessage("total_amount must be a number");
 
 const due_date = check("due_date")
   .exists()
   .withMessage("due_date is required")
   .notEmpty()
-  .withMessage("total musn't be empty")
+  .withMessage("due_date musn't be empty")
   .custom((date) => validateDate(date));
 
-module.exports = { client_name, client_email, total, due_date };
+module.exports = { client_name, client_email, total_amount, due_date };

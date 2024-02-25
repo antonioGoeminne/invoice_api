@@ -27,7 +27,7 @@ const createInvoice = async (req, res, next) => {
       client_name,
       client_email,
       due_date,
-      total,
+      total_amount,
       status = "draft",
     } = req.body;
 
@@ -35,7 +35,7 @@ const createInvoice = async (req, res, next) => {
       client_email,
       client_name,
       due_date,
-      total_amount: total,
+      total_amount,
       status,
       created_date: new Date(),
     };
